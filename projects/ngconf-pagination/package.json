@@ -8,13 +8,13 @@
   "description": "Angular Library to provide Pagination with Search Feature to Angular apps.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SaiSurya9999/NgTagInputLibrary.git"
+    "url": "https://github.com/SaiSurya9999/NgPaginationLibrary.git"
   },
   "bugs": {
-    "url": "https://github.com/SaiSurya9999/NgTagInputLibrary/issues",
+    "url": "https://github.com/SaiSurya9999/NgPaginationLibrary/issues",
     "email": "tsaisurya@gmail.com"
   },
-  "homepage": "https://github.com/SaiSurya9999/NgTagInputLibrary",
+  "homepage": "https://github.com/SaiSurya9999/NgPaginationLibrary",
   "license": "MIT",
   "keywords": [
     "angular",
