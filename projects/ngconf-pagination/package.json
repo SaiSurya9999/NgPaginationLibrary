@@ -1,0 +1,35 @@
+{
+  "name": "ngconf-pagination",
+  "version": "0.0.1",
+  "author": {
+    "name": "Sai Surya Teja",
+    "email": "tsaisurya@gmail.com"
+  },
+  "description": "Angular Library to provide Pagination with Search Feature to Angular apps.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SaiSurya9999/NgTagInputLibrary.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SaiSurya9999/NgTagInputLibrary/issues",
+    "email": "tsaisurya@gmail.com"
+  },
+  "homepage": "https://github.com/SaiSurya9999/NgTagInputLibrary",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "ngconf-pagination",
+    "pagination",
+    "ngx-pagination",
+    "pagination with search"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^10.0.6",
+    "@angular/core": "^10.0.6"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
