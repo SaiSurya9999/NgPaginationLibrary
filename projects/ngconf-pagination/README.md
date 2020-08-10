@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 [NPM Package Link](https://www.npmjs.com/package/ngconf-pagination "ngconf-pagination")  
 
 ## Step - 2  
-Import NgconfTaginputModule in app.module.ts file.  
+Import NgconfPaginationModule in app.module.ts file.  
 
 **app.module.ts**
 ```typescript
@@ -30,6 +30,7 @@ import {NgconfPaginationModule} from 'ngconf-pagination';
 This step is to quick start the usage of package later with the understanding of workflow you can  
 modify the code. You can have a look in our stackbliz demo for more clarity. Json typicode dummy data api is used to show that this package can handle asynchronous data.
 **app.component.ts**
+```typescript
   tableArray:Array<any> = [];
   currentPage:any = 1;
   itemsPerPage:any = 10;
