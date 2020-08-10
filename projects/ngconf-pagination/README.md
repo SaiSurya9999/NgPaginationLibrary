@@ -97,6 +97,19 @@ export interface opt {
   searchTerm: String;
   prop: String;
 }
+```  
+## Explanation on paginator controls component inputs 
+1 **elementsPerPage** this input is used to specify the items per page like 10,5 and 20 etc to divide the data.  
+2 **currentPage** This input is used to specify the current page so that accordingly pipe transforms the data.  
+3 **searchTerm** This input is used to take user search input and show the results by applying it on the data.  
+4. **prop** This input property is used to take specific table field to search.It can be left with empty string to search on all fields.   
+Structure of the configuration interface for reference.
+```typescript
+export interface opt{
+  currentPage:any;
+  itemsPerPage:any;
+  dataLength:any;  
+}
 ```
 
 
