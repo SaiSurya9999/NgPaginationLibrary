@@ -1,86 +1,88 @@
-# Ngconf-TagInput Library
+# Ngconf-Pagination Library
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
-> ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-left-arrow.png "Prev Page")  1 of 5 ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-right-arrow.png "Next Page") Pagination Feature for Angular.  
+> ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-left-arrow.png "Prev Page")  1 of 5 ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-right-arrow.png "Next Page") Pagination Feature with search functionality for Angular.  
 
 
 ### Demo Link   
-[Stackblitz Demo](https://stackblitz.com/edit/ngconf-taginput "ngconf-taginput Demo") 
+[Stackblitz Demo](https://stackblitz.com/edit/ngconf-pagination "ngconf-pagination Demo") 
 
 ## Step - 1
 
-> npm i ngconf-taginput --save  
-[NPM Package Link](https://www.npmjs.com/package/ngconf-taginput "ngconf-taginput")  
+> npm i ngconf-pagination --save  
+[NPM Package Link](https://www.npmjs.com/package/ngconf-pagination "ngconf-pagination")  
 
 ## Step - 2  
 Import NgconfTaginputModule in app.module.ts file.  
 
 **app.module.ts**
 ```typescript
-import {NgconfTaginputModule} from 'ngconf-taginput';
+import {NgconfPaginationModule} from 'ngconf-pagination';
  imports: [
     BrowserModule,
     AppRoutingModule,
-    NgconfTaginputModule
+    NgconfPaginationModule,
+    HttpClientModule
   ]
 ```
 
 ## Step - 3
 This step is to quick start the usage of package later with the understanding of workflow you can  
-modify the code.  
+modify the code. You can have a look in our stackbliz demo for more clarity.  
 **app.component.ts**
- ```typescript
-  customStyles = {
-    iconColor: "",
-    iconSize: "",
-    tagBackground: "",
-    tagFont: "",
-    tagSize: "",
-    tagBox_minHeight: "",
-    tagBox_Height: "",
-    tagBox_Width: "",
-    tagBox_Background: "",
-    tag_InputColor: "",
-    tag_InputPlaceholder: "Favourites"
-  };
-  typeaheads:any = [
-    'Adilabad',
-    'Anantapur',
-    'Chittoor',
-    'Kakinada',
-    'Guntur',
-    'Hyderabad',
-    'Karimnagar',
-    'Khammam',
-    'Krishna',
-    'Kurnool',
-    'Mahbubnagar',
-    'Medak',
-    'Nalgonda',
-    'Nizamabad',
-    'Ongole',
-    'Hyderabad',
-    'Srikakulam',
-    'Nellore',
-    'Visakhapatnam',
-    'Vizianagaram',
-    'Warangal',
-    'Eluru',
-    'Kadapa'
-  ]
-  allowedTags =  [];
-  
-  tagInput(tags){
-    console.log(tags);
-  }
-  onFail(msg){
-    alert(msg);
+  tableArray:Array<any> = [];
+  currentPage:any = 1;
+  itemsPerPage:any = 10;
+  totalPage:any = 0;
+  term:any = "";
+  prop:any = "";
+  constructor(private http: HttpClient){
+
+  } 
+  ngOnInit(){
+  //JSON Typicode dummy data API you can replace with your api
+  this.http.get("https://jsonplaceholder.typicode.com/comments")
+  .subscribe(res => {
+     let temp:any = res;
+     this.tableArray = temp;
+  });
+    
   }
 ```
 **app.component.html**
 ```html
-<ngconf-taginput (onTag)="tagInput($event)" [customStyles]="customStyles" [typeaheads]="typeaheads" [allowed]="allowedTags" (onFail)="onFail($event)">
-</ngconf-taginput>
+  <input type="text" [(ngModel)]="term" [value]="term" placeholder="Search">
+  <br>
+  <label class="mt-3" for="fill">Searh Based On:</label>
+  <select class="ml-2" [(ngModel)]="prop" id="fill">
+    <option  value="" selected>All</option>
+    <option value="id">ID</option>
+    <option value="name">Name</option>
+    <option value="email">Email</option>
+    <option value="body">Body</option>
+  </select>
+  <div class="table-responsive" *ngIf="tableArray.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tableArray  | paginator: { elementsPerPage: itemsPerPage, currentPage: currentPage,searchTerm: term, prop: prop  } " >
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.body}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+<pagination-controls *ngIf="term == ''" (pageChange)="currentPage = $event" [controls]="{currentPage: currentPage,itemsPerPage: itemsPerPage,dataLength: tableArray.length  }"></pagination-controls>
 ```
 
 ## Explanation on Component Properties  
