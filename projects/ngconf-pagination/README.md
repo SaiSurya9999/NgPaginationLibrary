@@ -1,8 +1,7 @@
 # Ngconf-TagInput Library
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
-
-> ![ngconf-taginput](https://img.icons8.com/office/48/000000/tags.png "Tag Feature") TagInput Feature for Angular.  
+> ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-left-arrow.png "Prev Page")  1 of 5 ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-right-arrow.png "Next Page") Pagination Feature for Angular.  
 
 
 ### Demo Link   
