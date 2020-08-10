@@ -99,18 +99,18 @@ export interface opt {
 }
 ```  
 ## Explanation on paginator controls component inputs 
-1 **elementsPerPage** this input is used to specify the items per page like 10,5 and 20 etc to divide the data.  
-2 **currentPage** This input is used to specify the current page so that accordingly pipe transforms the data.  
-3 **searchTerm** This input is used to take user search input and show the results by applying it on the data.  
-4. **prop** This input property is used to take specific table field to search.It can be left with empty string to search on all fields.   
-Structure of the configuration interface for reference.
+1 **currentPage** This input is to specify the component the current page.  
+2 **itemsPerPage** This input is used to specify the items per page to the component.  
+3 **dataLength** This input is used to caluculate the total pages based on data length and items per page.
 ```typescript
 export interface opt{
   currentPage:any;
   itemsPerPage:any;
   dataLength:any;  
 }
-```
+```  
+## Styling Suggestion  
+If you want to have your own page control component then you can use your component and use the above parameters to caluculate the total pages and current page change functionality.
 
 
 > That's it you are good to go. Happy Coding :)
