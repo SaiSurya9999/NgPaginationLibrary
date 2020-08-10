@@ -84,48 +84,20 @@ modify the code. You can have a look in our stackbliz demo for more clarity. Jso
 <pagination-controls *ngIf="term == ''" (pageChange)="currentPage = $event" [controls]="{currentPage: currentPage,itemsPerPage: itemsPerPage,dataLength: tableArray.length  }"></pagination-controls>
 ```
 
-## Explanation on Component Properties  
-1 **(onTag)** event is triggered when user adds a tag returns whole tags array added that point of time.  
-2 **[typeaheads]** if you want any typeahead suggestions to the user when adding tags then add those in a array and assign to this property.  
-Module will automatically add filter to the array and give suggestions to the user.  
-3 **[customStyles]** There are many styling changes you can do using this configuration property.  
-4. **[allowed]** This property is usefull when you want user to enter only allowed tags. This can be left with an empty array if you dont want to use it.  
-5. **(onFail)** This event is triggered when you use allowed tags feature when user tried to input wrong tag which is not present in allowed tags.  
+## Explanation on paginator pipe inputs 
+1 **elementsPerPage** this input is used to specify the items per page like 10,5 and 20 etc to divide the data.  
+2 **currentPage** This input is used to specify the current page so that accordingly pipe transforms the data.  
+3 **searchTerm** This input is used to take user search input and show the results by applying it on the data.  
+4. **prop** This input property is used to take specific table field to search.It can be left with empty string to search on all fields.   
 Structure of the configuration interface for reference.
 ```typescript
-export interface styleCustom{
-  iconColor: String,
-  iconSize: String,
-  tagBackground: String,
-  tagFont: String,
-  tagSize: String,
-  tagBox_Background: String,
-  tagBox_minHeight: String,
-  tagBox_Height: String,
-  tagBox_Width:String,
-  tag_InputColor: String,
-  tag_InputPlaceholder: String
+export interface opt {
+  elementsPerPage: Number;
+  currentPage: Number;
+  searchTerm: String;
+  prop: String;
 }
 ```
 
-## Styling of Typeahead Suggestions  
-(Styles can be overwritten based on your application theme)   
-> Styles can be overwritten in global styles file in angular project.  
-1. **typeahead** class is for parent div styling.  
-2. **typeaheadul** class is for ul tag which is parent for li tag.
-3. **typeaheadli** class is for li elements of suggestions.  
 
-**styles.css or styles.scss**
-```css
-.typeaheadul{
-  background: #cce5ff;
-}
-.typeaheadli{
-  color: purple;
-}
-.typeahead{
-      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-      padding: 10px;
-}
-```
 > That's it you are good to go. Happy Coding :)
