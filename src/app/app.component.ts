@@ -22,6 +22,8 @@ export class AppComponent implements OnInit {
      let temp:any = res;
      this.tableArray = temp;
   });
+  // this.tableArray = [ {id: 1,name: "Sai Surya",email: "abc", body: "Msg"},
+  // {id: 2,name: "Sai Surya",email: "abc", body: "Msg"} ]
     
   }
 

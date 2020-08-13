@@ -18,7 +18,7 @@ export class PaginatorPipe implements PipeTransform {
   //  console.log(value.length);
  //   console.log(opt);
     if(opt.searchTerm == ""){
-      return this.dividePagesBeta(value,opt);
+      return this.dividePagesalpha(value,opt);
     }else{
       if (opt.prop) {
         if (opt.prop.toString() != "") {
@@ -40,7 +40,23 @@ export class PaginatorPipe implements PipeTransform {
     
    
   }
-
+  dividePagesalpha(value:Array<any>,opt:opt): Array<any>{
+    let items:any = opt.elementsPerPage;
+    let page:any = opt.currentPage;
+    page--;
+    let startIndex:any = 0;
+    startIndex = (page * items);
+    let endIndex:any = (startIndex + items) - 1;
+    let output:Array<any> = [];
+     for(let i=0; i<value.length; i++){
+        if(i>=startIndex && i<=endIndex){
+       
+          output.push(value[i]); 
+        }
+        
+     }
+     return output;
+    }
   dividePagesBeta(value:Array<any>,opt:opt): Array<any>{
     let items:any = opt.elementsPerPage;
     let page:any = opt.currentPage;

@@ -10,19 +10,21 @@ import { AppComponent } from './app.component';
 import { PaginatorPipe } from './paginator.pipe';
 import { PageControlsComponent } from './page-controls/page-controls.component';
 import { SearchFilterPipe } from './search-filter.pipe';
-import { PaginationControlsComponent } from './pagination-controls/pagination-controls.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaginatorPipe,
+    PageControlsComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgconfSearchModule,
     FormsModule,
-    HttpClientModule,
-    NgconfPaginationModule
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

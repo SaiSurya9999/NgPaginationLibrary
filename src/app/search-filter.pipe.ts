@@ -37,14 +37,14 @@ export class SearchFilterPipe implements PipeTransform {
         //Filtered Results based on Search Term
         return this.storedArray.filter(function (item) {
           // console.log(item);
-          return JSON.stringify(item[opt.prop.toString()]).toLowerCase().includes(opt.term.toString());
+          return JSON.stringify(item[opt.prop.toString()]).toLowerCase().includes(opt.term.toString().toLowerCase());
         });
       }
     } else {
       //Filtered Results based on Search Term
       return this.storedArray.filter(function (item) {
         // console.log(item);
-        return JSON.stringify(item).toLowerCase().includes(opt.term.toString());
+        return JSON.stringify(item).toLowerCase().includes(opt.term.toString().toLowerCase());
       });
     }
 
