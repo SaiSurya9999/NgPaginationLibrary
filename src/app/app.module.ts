@@ -15,8 +15,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
   declarations: [
     AppComponent,
     PaginatorPipe,
-    PageControlsComponent,
-    SearchFilterPipe
+   PageControlsComponent,
+   SearchFilterPipe
   ],
   imports: [
     BrowserModule,

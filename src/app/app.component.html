@@ -10,6 +10,14 @@
     <option value="email">Email</option>
     <option value="body">Body</option>
   </select>
+  <span class="ml-3">Items per Page</span>
+  <select class="ml-2" [(ngModel)]="itemsPerPage" id="fill">
+  <option  value="3" selected>3</option>
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+  <option value="20">20</option>
+</select>
   <div class="table-responsive" *ngIf="tableArray.length > 0">
     <table class="table table-striped">
       <thead>

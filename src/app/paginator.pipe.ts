@@ -15,8 +15,6 @@ export interface opt {
 export class PaginatorPipe implements PipeTransform {
 
   transform(value: Array<any>, opt?: opt): any {
-  //  console.log(value.length);
- //   console.log(opt);
     if(opt.searchTerm == ""){
       return this.dividePagesBeta(value,opt);
     }else{
@@ -25,14 +23,12 @@ export class PaginatorPipe implements PipeTransform {
           let result = value.map(a => a[opt.prop.toString()]);
           //Filtered Results based on Search Term
           return value.filter(function (item) {
-            // console.log(item);
             return JSON.stringify(item[opt.prop.toString()]).toLowerCase().includes(opt.searchTerm.toString());
           });
         }
       } else {
         //Filtered Results based on Search Term
         return value.filter(function (item) {
-          // console.log(item);
           return JSON.stringify(item).toLowerCase().includes(opt.searchTerm.toString());
         });
       }
@@ -42,8 +38,8 @@ export class PaginatorPipe implements PipeTransform {
   }
 
   dividePagesBeta(value:Array<any>,opt:opt): Array<any>{
-    let items:any = opt.elementsPerPage;
-    let page:any = opt.currentPage;
+    let items:any = Number(opt.elementsPerPage);
+    let page:any =  Number(opt.currentPage);
     page--;
     let startIndex:any = 0;
     startIndex = (page * items);
@@ -52,31 +48,11 @@ export class PaginatorPipe implements PipeTransform {
     let output:Array<any> = [];
      for(let i=0; i<value.length; i++){
         if(i>=startIndex && i<=endIndex){
-       
           output.push(value[i]); 
         }
-        
      }
      return output;
     }
 
-  dividePages(value:Array<any>,opt:opt): Array<any>{
-    let items:any = opt.elementsPerPage;
-    let page:any = opt.currentPage;
-    page--;
-    let startIndex:any = 0;
-    startIndex = (page * items);
-    let endIndex:any = (startIndex + items) - 1;
-    let output:Array<any> = [];
-   // console.log(startIndex+" || "+endIndex);
-     for(let i=(value.length - 1); i>=0; i--){
-        if(i<startIndex || i>endIndex){
-        
-        }else{
-          output.push(value[i]); 
-        }
-        
-     }
-     return output;
-    }
+
 }
