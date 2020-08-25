@@ -44,7 +44,7 @@ export class PaginatorPipe implements PipeTransform {
     let startIndex:any = 0;
     startIndex = (page * items);
     let endIndex:any = (startIndex + items) - 1;
-    console.log(startIndex,endIndex);
+   // console.log(startIndex,endIndex);
     let output:Array<any> = [];
      for(let i=0; i<value.length; i++){
         if(i>=startIndex && i<=endIndex){
