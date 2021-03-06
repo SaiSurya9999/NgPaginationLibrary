@@ -31,7 +31,7 @@ export class PageControlsComponent implements OnInit, OnChanges {
     "color": "#007bff",
     "background-color": "#fff"
   };
-  activePage:any = 0;
+  activePage: any = 0;
 
   constructor() { }
 
@@ -43,13 +43,12 @@ export class PageControlsComponent implements OnInit, OnChanges {
 
   navigateTo(pageIndex) {
     this.pageChange.emit(pageIndex);
-    this.activePageStyle(this.activePage, (pageIndex - 1));
+    this.activePageStyle(this.activePage, (pageIndex - 1)); // Applying active state color
   }
 
   nextPage() {
     if ((this.controls.currentPage + 1) <= this.totalPage) {
       this.pageChange.emit(this.controls.currentPage + 1);
-
     }
   }
   prevPage() {
@@ -65,10 +64,12 @@ export class PageControlsComponent implements OnInit, OnChanges {
     this.pageTabArray = []; // Clearing the page links for caluculation
     // Pushing the page numbers into the array
     for (let k = 1; k <= this.totalPage; k++) {
-      this.pageTabArray.push({
-        pageNumber: k,
-        isEnable: false
-      });
+        this.pageTabArray.push({
+          pageNumber: k,
+          isEnable: false,
+          style: { ...this.liStyle,  }
+        });
+      
     }
     // Based on the current page we have filter the Page links instead of showing all the pages available   
     let currentPageIndex = (this.controls.currentPage - 1);
@@ -98,37 +99,47 @@ export class PageControlsComponent implements OnInit, OnChanges {
         this.pageTabArray[k].isEnable = true;
       }
     }
+    // To handle active state styling on page tab array refresh
+    this.pageTabArray[this.controls.currentPage  - 1].style.backgroundColor = this.stlyling.activeBackgroundColor;
+    this.pageTabArray[this.controls.currentPage  - 1].style.color = this.stlyling.activeTextColor;
   }
 
-  hoverControl(ev) {
-    switch (ev.type) {
-      case "mouseover":
-        if (document.getElementById(ev.toElement.id) != null) {
-          document.getElementById(ev.toElement.id).style.backgroundColor = this.stlyling.onHoverBackgroundColor;
-          document.getElementById(ev.toElement.id).style.color = this.stlyling.onHoverTextColor;
-        }
-        break;
-      case "mouseleave":
-        if (document.getElementById(ev.fromElement.id) != null) {
-          document.getElementById(ev.fromElement.id).style.backgroundColor = this.stlyling.backgroundColor;
-          document.getElementById(ev.fromElement.id).style.color = this.stlyling.textColor;
-        }
-        break;
+  hoverControl(ev, isActive=false) {
+    if (!isActive) {
+      switch (ev.type) {
+        case "mouseover":
+          if (document.getElementById(ev.toElement.id) != null) {
+            document.getElementById(ev.toElement.id).style.backgroundColor = this.stlyling.onHoverBackgroundColor;
+            document.getElementById(ev.toElement.id).style.color = this.stlyling.onHoverTextColor;
+          }
+          break;
+        case "mouseleave":
+          if (document.getElementById(ev.fromElement.id) != null) {
+            document.getElementById(ev.fromElement.id).style.backgroundColor = this.stlyling.backgroundColor;
+            document.getElementById(ev.fromElement.id).style.color = this.stlyling.textColor;
+          }
+          break;
+      }
     }
   }
 
   activePageStyle(prev, current) {
-    prev = "index"+prev;
-    current = "index"+current;
-    console.log(prev+" || "+current);
-    if (document.getElementById(prev) != null) {
-      document.getElementById(prev).style.backgroundColor = this.stlyling.backgroundColor;
-      document.getElementById(prev).style.color = this.stlyling.textColor;
-    }
-    if (document.getElementById(current) != null) {
-      document.getElementById(current).style.backgroundColor = this.stlyling.activeBackgroundColor;
-      document.getElementById(current).style.color = this.stlyling.activeTextColor;
-    }
+    this.pageTabArray[prev].style.backgroundColor = this.stlyling.backgroundColor;
+    this.pageTabArray[prev].style.color = this.stlyling.textColor;
+
+    this.pageTabArray[current].style.backgroundColor = this.stlyling.activeBackgroundColor;
+    this.pageTabArray[current].style.color = this.stlyling.activeTextColor;
+    // prev = "index"+prev;
+    // current = "index"+current;
+    // console.log(prev+" || "+current);
+    // if (document.getElementById(prev) != null) {
+    //   document.getElementById(prev).style.backgroundColor = this.stlyling.backgroundColor;
+    //   document.getElementById(prev).style.color = this.stlyling.textColor;
+    // }
+    // if (document.getElementById(current) != null) {
+    //   document.getElementById(current).style.backgroundColor = this.stlyling.activeBackgroundColor;
+    //   document.getElementById(current).style.color = this.stlyling.activeTextColor;
+    // }
   }
 
   ngOnChanges(changes: SimpleChanges) {

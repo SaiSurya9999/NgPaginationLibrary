@@ -14,7 +14,8 @@
             </li>
             <ng-container *ngFor="let item of pageTabArray; let i=index;">
                 <li *ngIf="item.isEnable == true;" class="page-item">
-                    <a id="{{'index'+i}}" [ngStyle]="liStyle" (mouseover)="hoverControl($event)" (mouseleave)="hoverControl($event)" (click)="navigateTo(item.pageNumber)" class="page-link-custom"
+                    <!--[style.background]="(item.pageNumber ==  controls.currentPage) ? stlyling.activeBackgroundColor : stlyling.backgroundColor"-->
+                    <a id="{{'index'+i}}" [ngStyle]="item.style" (mouseover)="hoverControl($event, (item.pageNumber ==  controls.currentPage))" (mouseleave)="hoverControl($event, (item.pageNumber ==  controls.currentPage))" (click)="navigateTo(item.pageNumber)" class="page-link-custom"
                     [ngClass]="{ 'active': item.pageNumber ==  controls.currentPage }">{{item.pageNumber}}</a></li>
             </ng-container>
             <li class="page-item-custom"><a (mouseover)="hoverControl($event)" (mouseleave)="hoverControl($event)" id="next" [ngStyle]="liStyle" class="page-link-custom" (click)="nextPage()">Next</a></li>
