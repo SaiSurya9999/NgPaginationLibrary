@@ -1,9 +1,12 @@
 # Ngconf-Pagination Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 > ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-left-arrow.png "Prev Page")  1 of 5 ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-right-arrow.png "Next Page") Pagination Feature with search functionality for Angular.  
 
-
+### Latest Release: 
+Now we added support for special characters search by removing them from search index process for better results. 
+Now we updated the package to latest angular version.
+Added page tabs support for pagination control component and changed the input configurations for that component.
 ### Demo Link   
 [Stackblitz Demo](https://stackblitz.com/edit/ngconf-pagination "ngconf-pagination Demo") 
 
