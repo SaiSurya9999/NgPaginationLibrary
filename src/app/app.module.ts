@@ -14,8 +14,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    //PaginatorPipe,
-  // PageControlsComponent,
+   PaginatorPipe,
+   PageControlsComponent,
    SearchFilterPipe
   ],
   imports: [
@@ -24,7 +24,7 @@ import { SearchFilterPipe } from './search-filter.pipe';
     NgconfSearchModule,
     FormsModule,
     HttpClientModule,
-    NgconfPaginationModule
+  //  NgconfPaginationModule
     
   ],
   providers: [],
