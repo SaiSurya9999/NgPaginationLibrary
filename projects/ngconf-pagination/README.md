@@ -4,6 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 > ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-left-arrow.png "Prev Page")  1 of 5 ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-right-arrow.png "Next Page") Pagination Feature with search functionality for Angular.  
 
 ### Latest Release: 
+Now you can customize the color schemes of Pagination controls component.  
 Now we added support for special characters search by removing them from search index process for better results.   
 Now we updated the package to latest angular version.  
 Added page tabs support for pagination control component and changed the input configurations for that component.  
@@ -41,6 +42,14 @@ modify the code. You can have a look in our stackbliz demo for more clarity. Jso
   term:any = "";
   prop:any = "";
   pageTabs: boolean = true;
+    stylingProps:any = {
+    backgroundColor: "#fff",
+    textColor: "blue",
+    activeBackgroundColor: "green",
+    activeTextColor: "#fff",
+    onHoverBackgroundColor: "#e9ecef",
+    onHoverTextColor: "#0056b3"
+  };
   constructor(private http: HttpClient){
 
   } 
@@ -86,7 +95,7 @@ modify the code. You can have a look in our stackbliz demo for more clarity. Jso
       </tbody>
     </table>
   </div>
-<pagination-controls *ngIf="term == ''" (pageChange)="currentPage = $event" [controls]="{currentPage: currentPage,itemsPerPage: itemsPerPage,dataLength: tableArray.length , pageTabs: pageTabs }"></pagination-controls>
+ <pagination-controls *ngIf="term == ''" [stlyling]="stylingProps"  (pageChange)="currentPage = $event" [controls]="{currentPage: currentPage,itemsPerPage: itemsPerPage,dataLength: tableArray.length,pageTabs:  pageTabs }"></pagination-controls>
 ```
 
 ## Explanation on paginator pipe inputs 
@@ -108,10 +117,29 @@ export interface opt {
 2 **itemsPerPage** This input is used to specify the items per page to the component.  
 3 **dataLength** This input is used to caluculate the total pages based on data length and items per page.
 ```typescript
+/**
+ * The below are the two input property configuration interfaces for reference they  * are pretty much self explanatory.
+ * Note: The intefaces for Paginator pipe are different. The below are for pagination * controls.
+ * Input property is "controls" for <pagination-controls> <pagination-controls/>   
+ * component
+ * */
 export interface opt{
-  currentPage:any;
-  itemsPerPage:any;
-  dataLength:any;  
+    currentPage:any;
+    itemsPerPage:any;
+    dataLength:any;
+    pageTabs:boolean  
+}
+/**
+ * Input property is "stlyling" for <pagination-controls> <pagination-controls/>   
+ * component
+ * */
+export interface stylingProps {
+  backgroundColor: string,
+  textColor: string,
+  activeBackgroundColor: string,
+  activeTextColor: string,
+  onHoverBackgroundColor: string,
+  onHoverTextColor: string
 }
 ```  
 ## Styling Suggestion  
