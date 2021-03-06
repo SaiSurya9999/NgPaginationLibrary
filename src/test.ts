@@ -13,7 +13,8 @@ declare const require: {
     <T>(id: string): T;
   };
 };
-
+// ng update @angular/cli ng update @angular/core ng update rxjs
+// 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
