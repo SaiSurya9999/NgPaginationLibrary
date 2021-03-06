@@ -1,11 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { opt } from '../model/modal';
 
-export interface opt{
-  currentPage:any;
-  itemsPerPage:any;
-  dataLength:any;
-  pageTabs:boolean  
-}
+
 
 @Component({
   selector: 'pagination-controls',

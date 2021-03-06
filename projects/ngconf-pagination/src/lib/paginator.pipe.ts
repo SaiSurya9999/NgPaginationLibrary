@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 //Configuration for Pipe Input Args
-export interface opt {
+export interface option {
   elementsPerPage: Number;
   currentPage: Number;
   searchTerm: String;
@@ -14,7 +14,7 @@ export interface opt {
 })
 export class PaginatorPipe implements PipeTransform {
 
-  transform(value: Array<any>, opt?: opt): any {
+  transform(value: Array<any>, opt?: option): any {
     if(opt.searchTerm == ""){
       return this.dividePagesBeta(value,opt);
     }else{
@@ -37,7 +37,7 @@ export class PaginatorPipe implements PipeTransform {
    
   }
 
-  dividePagesBeta(value:Array<any>,opt:opt): Array<any>{
+  dividePagesBeta(value:Array<any>,opt:option): Array<any>{
     let items:any = Number(opt.elementsPerPage);
     let page:any =  Number(opt.currentPage);
     page--;
