@@ -4,9 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 > ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-left-arrow.png "Prev Page")  1 of 5 ![ngconf-pagination](https://img.icons8.com/flat_round/48/000000/wide-long-right-arrow.png "Next Page") Pagination Feature with search functionality for Angular.  
 
 ### Latest Release: 
-Now we added support for special characters search by removing them from search index process for better results. 
-Now we updated the package to latest angular version.
-Added page tabs support for pagination control component and changed the input configurations for that component.
+Now we added support for special characters search by removing them from search index process for better results.   
+Now we updated the package to latest angular version.  
+Added page tabs support for pagination control component and changed the input configurations for that component.  
 ### Demo Link   
 [Stackblitz Demo](https://stackblitz.com/edit/ngconf-pagination "ngconf-pagination Demo") 
 
@@ -40,6 +40,7 @@ modify the code. You can have a look in our stackbliz demo for more clarity. Jso
   totalPage:any = 0;
   term:any = "";
   prop:any = "";
+  pageTabs: boolean = true;
   constructor(private http: HttpClient){
 
   } 
@@ -85,7 +86,7 @@ modify the code. You can have a look in our stackbliz demo for more clarity. Jso
       </tbody>
     </table>
   </div>
-<pagination-controls *ngIf="term == ''" (pageChange)="currentPage = $event" [controls]="{currentPage: currentPage,itemsPerPage: itemsPerPage,dataLength: tableArray.length  }"></pagination-controls>
+<pagination-controls *ngIf="term == ''" (pageChange)="currentPage = $event" [controls]="{currentPage: currentPage,itemsPerPage: itemsPerPage,dataLength: tableArray.length , pageTabs: pageTabs }"></pagination-controls>
 ```
 
 ## Explanation on paginator pipe inputs 
