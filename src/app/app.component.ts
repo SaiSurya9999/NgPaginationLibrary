@@ -9,11 +9,20 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   tableArray:Array<any> = [];
   currentPage:any = 1;
-  itemsPerPage:any = 10;
+  itemsPerPage:any = 5;
   totalPage:any = 0;
   term:any = "";
   prop:any = "";
   pageTabs:boolean = true;
+
+  stylingProps:any = {
+    backgroundColor: "#fff",
+    textColor: "blue",
+    activeBackgroundColor: "green",
+    activeTextColor: "#fff",
+    onHoverBackgroundColor: "#e9ecef",
+    onHoverTextColor: "#0056b3"
+  };
   constructor(private http: HttpClient){
 
   } 
@@ -23,8 +32,6 @@ export class AppComponent implements OnInit {
      let temp:any = res;
      this.tableArray = temp;
   });
-  // this.tableArray = [ {id: 1,name: "Sai Surya",email: "abc", body: "Msg"},
-  // {id: 2,name: "Sai Surya",email: "abc", body: "Msg"} ]
     
   }
 

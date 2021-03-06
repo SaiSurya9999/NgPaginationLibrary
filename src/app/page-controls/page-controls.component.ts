@@ -33,12 +33,15 @@ export class PageControlsComponent implements OnInit, OnChanges {
   };
   activePage: any = 0;
 
-  constructor() { }
+  constructor() {
+    this.liStyle.color = this.stlyling.textColor;
+    this.liStyle["background-color"] = this.stlyling.backgroundColor;
+  }
 
   ngOnInit(): void {
     this.totalPages();
-    this.liStyle.color = this.stlyling.textColor;
-    this.liStyle["background-color"] = this.stlyling.backgroundColor;
+    this.pageTabs();
+
   }
 
   navigateTo(pageIndex) {
@@ -64,12 +67,12 @@ export class PageControlsComponent implements OnInit, OnChanges {
     this.pageTabArray = []; // Clearing the page links for caluculation
     // Pushing the page numbers into the array
     for (let k = 1; k <= this.totalPage; k++) {
-        this.pageTabArray.push({
-          pageNumber: k,
-          isEnable: false,
-          style: { ...this.liStyle,  }
-        });
-      
+      this.pageTabArray.push({
+        pageNumber: k,
+        isEnable: false,
+        style: { ...this.liStyle, }
+      });
+
     }
     // Based on the current page we have filter the Page links instead of showing all the pages available   
     let currentPageIndex = (this.controls.currentPage - 1);
@@ -100,11 +103,13 @@ export class PageControlsComponent implements OnInit, OnChanges {
       }
     }
     // To handle active state styling on page tab array refresh
-    this.pageTabArray[this.controls.currentPage  - 1].style.backgroundColor = this.stlyling.activeBackgroundColor;
-    this.pageTabArray[this.controls.currentPage  - 1].style.color = this.stlyling.activeTextColor;
+    if (this.pageTabArray.length > 0) {
+      this.pageTabArray[this.controls.currentPage - 1].style.backgroundColor = this.stlyling.activeBackgroundColor;
+      this.pageTabArray[this.controls.currentPage - 1].style.color = this.stlyling.activeTextColor;
+    }
   }
 
-  hoverControl(ev, isActive=false) {
+  hoverControl(ev, isActive = false) {
     if (!isActive) {
       switch (ev.type) {
         case "mouseover":
