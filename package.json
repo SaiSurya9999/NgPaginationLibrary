@@ -21,6 +21,7 @@
     "@angular/router": "~11.2.4",
     "bootstrap": "^4.5.2",
     "jquery": "^3.5.1",
+    "ngconf-pagination": "0.0.6",
     "ngconf-search": "0.0.7",
     "rxjs": "~6.6.6",
     "tslib": "^2.0.0",
