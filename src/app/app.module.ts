@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgconfSearchModule} from 'ngconf-search';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {NgconfPaginationModule} from 'ngconf-pagination';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,18 +12,15 @@ import { SearchFilterPipe } from './search-filter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-   PaginatorPipe,
-   PageControlsComponent,
-   SearchFilterPipe
+    PaginatorPipe,
+    PageControlsComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgconfSearchModule,
     FormsModule,
-    HttpClientModule,
-  //  NgconfPaginationModule
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
