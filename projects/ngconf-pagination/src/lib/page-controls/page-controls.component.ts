@@ -1,18 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
-
-export interface opt {
-  currentPage: any;
-  itemsPerPage: any;
-  dataLength: any;
-  pageTabs: boolean
-}
+import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'pagination-controls',
   templateUrl: './page-controls.component.html',
   styleUrls: ['./page-controls.component.scss']
 })
-export class PageControlsComponent implements OnInit, OnChanges {
+export class PageControlsComponent implements OnChanges {
 
   @Input() controls: opt;
   @Input() stlyling: stylingProps = {
@@ -38,11 +31,7 @@ export class PageControlsComponent implements OnInit, OnChanges {
     this.liStyle["background-color"] = this.stlyling.backgroundColor;
   }
 
-  ngOnInit(): void {
-    this.totalPages();
-    this.pageTabs();
 
-  }
 
   navigateTo(pageIndex) {
     this.pageChange.emit(pageIndex);
@@ -134,20 +123,9 @@ export class PageControlsComponent implements OnInit, OnChanges {
 
     this.pageTabArray[current].style.backgroundColor = this.stlyling.activeBackgroundColor;
     this.pageTabArray[current].style.color = this.stlyling.activeTextColor;
-    // prev = "index"+prev;
-    // current = "index"+current;
-    // console.log(prev+" || "+current);
-    // if (document.getElementById(prev) != null) {
-    //   document.getElementById(prev).style.backgroundColor = this.stlyling.backgroundColor;
-    //   document.getElementById(prev).style.color = this.stlyling.textColor;
-    // }
-    // if (document.getElementById(current) != null) {
-    //   document.getElementById(current).style.backgroundColor = this.stlyling.activeBackgroundColor;
-    //   document.getElementById(current).style.color = this.stlyling.activeTextColor;
-    // }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.totalPages();
     this.pageTabs();
   }
@@ -162,3 +140,13 @@ export interface stylingProps {
   onHoverBackgroundColor: string,
   onHoverTextColor: string
 }
+
+export interface opt {
+  currentPage: any;
+  itemsPerPage: any;
+  dataLength: any;
+  pageTabs: boolean
+}
+
+// @angular/cli                       11.2.3 -> 12.1.1         ng update @angular/cli
+// @angular/core                      11.2.4 -> 12.1.1         ng update @angular/core
